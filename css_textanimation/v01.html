@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Flags and Text Hover Effects</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900;&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        overflow: hidden;
+      }
+      ul {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      ul li {
+        list-style: none;
+        text-align: center;
+        color: #333;
+        font-size: 3em;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.5s;
+        padding: 5px 20px;
+        border-radius: 10px;
+      }
+      ul:hover li {
+        color: transparent;
+        -webkit-text-stroke: 1px #000;
+      }
+      ul li:hover {
+        color: #333;
+        background: #fff;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.075);
+      }
+      ul li::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100vw;
+        height: 100vh;
+        background: #f00;
+        z-index: -1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: 0.5s;
+        color: rgba(0, 0, 0, 0.075);
+        font-size: 18vw;
+        -webkit-text-stroke: 0px #000;
+        letter-spacing: 100px;
+      }
+      ul li:hover::before {
+        content: attr(data-text);
+        opacity: 1;
+        letter-spacing: 10px;
+        font-size: 15vw;
+        text-transform: uppercase;
+      }
+      ul li:nth-child(1):before {
+        background: linear-gradient(#f00 0%, #f00 50%, #fff 50%, #fff 100%);
+      }
+      ul li:nth-child(2):before {
+        background: linear-gradient(27.5deg, rgb(197, 5, 5) 25%, transparent 0) 0 503.5px, linear-gradient(152.5deg, rgb(197, 5, 5) 25%, transparent 0) 0 -503.5px,
+          linear-gradient(180deg, #000000 33.33333%, #fff 33.33333%, #fff 66.66667%, #007229 66.66667%);
+      }
+      ul li:nth-child(3):before {
+        background: linear-gradient(#005bbc 0%, #005bbc 50%, #ffd600 50%, #ffd600 100%);
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li data-text="Indonesia">Indonesia</li>
+      <li data-text="Palestine">Palestine</li>
+      <li data-text="Ukraine">Ukraine</li>
+    </ul>
+  </body>
+</html>
